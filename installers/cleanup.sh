@@ -2,6 +2,7 @@
 
 set -ouex pipefail
 
+dnf upgrade -y
 dnf clean all
 
 rm -vr /config
