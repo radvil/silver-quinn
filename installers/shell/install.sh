@@ -3,7 +3,7 @@
 set -ouex pipefail
 
 # Install zsh
-dnf install -y zsh
+dnf5 install -y zsh
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -21,10 +21,10 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zs
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 
 # Set default shell to zsh
-chsh -s /bin/zsh
+# chsh -s /bin/zsh
 
 # Install fish shell
-dnf install -y fish
+dnf5 install -y fish
 
 # Install starship
 curl -sS https://starship.rs/install.sh | sh
@@ -34,16 +34,16 @@ echo "eval "$(starship init zsh)"" >>~/.zshrc
 echo "eval "$(starship init fish)"" >>~/.config/fish/config.fish
 
 # Install fzf
-dnf install -y fzf
+dnf5 install -y fzf
 
 # Install ripgrep
-dnf install -y ripgrep
+dnf5 install -y ripgrep
 
 # Install fd
-dnf install -y fd
+dnf5 install -y fd
 
 # Install bat
-dnf install -y bat
+dnf5 install -y bat
 
 # Install zoxide
 cargo install zoxide
