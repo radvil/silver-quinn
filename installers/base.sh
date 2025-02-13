@@ -8,40 +8,42 @@ sysctl -p
 # Install base packages
 
 sysadmin_packages=(
-    "@virtualization"
-    "NetworkManager-tui"
-    "virt-install"
-    "virt-manager"
-    "virt-viewer"
-    "podman"
+	"@virtualization"
+	"NetworkManager-tui"
+	"virt-install"
+	"virt-manager"
+	"virt-viewer"
+	"podman"
 )
 
 programming_packages=(
-    "nodejs"
-    "code"
-    "wget"
-    "zed"
-    "git"
-    "gh"
-    "jq"
+	"alacritty"
+	"nodejs"
+	"kitty"
+	"code"
+	"wget"
+	"zed"
+	"git"
+	"gh"
+	"jq"
 )
 
 utility_packages=(
-    "syncthing"
-    "fastfetch"
-    "starship"
-    "ripgrep"
-    "fish"
-    "zsh"
-    "fzf"
-    "fd"
-    "bat"
+	"syncthing"
+	"fastfetch"
+	"starship"
+	"ripgrep"
+	"fish"
+	"zsh"
+	"fzf"
+	"bat"
+	"fd"
 )
 
 packages=(
-    ${sysadmin_packages[@]}
-    ${programming_packages[@]}
-    ${utility_packages[@]}
+	${sysadmin_packages[@]}
+	${programming_packages[@]}
+	${utility_packages[@]}
 )
 
 # install rpms
