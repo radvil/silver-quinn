@@ -9,4 +9,4 @@ COPY system /
 COPY installers /installers
 COPY build.sh /tmp/build.sh
 
-RUN /build.sh
+RUN /tmp/build.sh
