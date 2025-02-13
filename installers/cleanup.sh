@@ -2,6 +2,7 @@
 
 set -ouex pipefail
 
-rm -vr /config
-
 dnf clean all
+
+rm -vr /config
+rm -vr /tmp/build.sh
