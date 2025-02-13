@@ -33,18 +33,6 @@ curl -sS https://starship.rs/install.sh | sh
 echo "eval "$(starship init zsh)"" >>~/.zshrc
 echo "eval "$(starship init fish)"" >>~/.config/fish/config.fish
 
-# Install fzf
-dnf5 install -y fzf
-
-# Install ripgrep
-dnf5 install -y ripgrep
-
-# Install fd
-dnf5 install -y fd
-
-# Install bat
-dnf5 install -y bat
-
 # Install zoxide
 cargo install zoxide
 
