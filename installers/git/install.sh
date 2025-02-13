@@ -3,7 +3,7 @@
 set -ouex pipefail
 
 # Install git
-dnf install -y git gh
+dnf5 install -y git gh
 
 # Configure git
 git config --global user.name "Radvil"
@@ -18,5 +18,5 @@ gh config set prompt "disabled"
 gh config set editor "nvim"
 
 # Install LazyGit from Copr
-dnf copr enable atim/lazygit -y
-dnf install lazygit
+dnf5 copr enable atim/lazygit -y
+dnf5 install lazygit

@@ -4,12 +4,8 @@ set -eou pipefail
 
 mkdir -p /var/lib/alternatives
 
-echo "::group:: ===Preconfig==="
-/installers/preconfig.sh
-echo "::endgroup::"
-
-echo "::group:: ===Install Shell Related Packages==="
-/installers/shell/install.sh
+echo "::group:: ===Install Base Packages==="
+/installers/base.sh
 echo "::endgroup::"
 
 echo "::group:: ===Install Tmux==="
@@ -22,6 +18,10 @@ echo "::endgroup::"
 
 echo "::group:: ===Install Neovim==="
 /installers/neovim/install.sh
+echo "::endgroup::"
+
+echo "::group:: ===Install Starship==="
+/installers/starship/install.sh
 echo "::endgroup::"
 
 echo "::group:: ===Install Desktop==="

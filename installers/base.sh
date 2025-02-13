@@ -17,18 +17,21 @@ sysadmin_packages=(
 )
 
 programming_packages=(
-    "code"
-    "gh"
     "nodejs"
-    "zed"
-    "jq"
+    "code"
     "wget"
+    "zed"
+    "git"
+    "gh"
+    "jq"
 )
 
 utility_packages=(
     "syncthing"
     "fastfetch"
     "ripgrep"
+    "fish"
+    "zsh"
     "fzf"
     "fd"
     "bat"
