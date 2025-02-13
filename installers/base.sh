@@ -29,6 +29,7 @@ programming_packages=(
 utility_packages=(
     "syncthing"
     "fastfetch"
+    "starship"
     "ripgrep"
     "fish"
     "zsh"

@@ -20,10 +20,6 @@ echo "::group:: ===Install Neovim==="
 /installers/neovim/install.sh
 echo "::endgroup::"
 
-echo "::group:: ===Install Starship==="
-/installers/starship/install.sh
-echo "::endgroup::"
-
 echo "::group:: ===Install Desktop==="
 /installers/desktop/install.sh
 echo "::endgroup::"
