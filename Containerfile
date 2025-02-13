@@ -1,21 +1,16 @@
-FROM ghcr.io/ublue-os/silverblue-main:latest
+ARG ASUS_NVIDIA="${ASUS_NVIDIA:-bazzite-asus-nvidia}"
+ARG RELEASE_TAG="${RELEASE_TAG:-stable}"
 
-## Other possible base images include:
-# FROM ghcr.io/ublue-os/bazzite:stable
-# FROM ghcr.io/ublue-os/bluefin-nvidia:stable
-# 
-# ... and so on, here are more base images
-# Universal Blue Images: https://github.com/orgs/ublue-os/packages
-# Fedora base image: quay.io/fedora/fedora-bootc:41
-# CentOS base images: quay.io/centos-bootc/centos-bootc:stream10
+FROM ghcr.io/ublue-os/${ASUS_NVIDIA}:${RELEASE_TAG} as silverquinn
 
-### MODIFICATIONS
-## make modifications desired in your image and install packages by modifying the build.sh script
-## the following RUN directive does all the things required to run "build.sh" as recommended.
+COPY system /
+COPY config /config
 
-COPY build.sh /tmp/build.sh
-
-RUN mkdir -p /var/lib/alternatives && \
-    /tmp/build.sh && \
+RUN /config/preconfig.sh && \
+    /config/shell/install.sh && \
+    /config/tmux/install.sh && \
+    /config/git/install.sh && \
+    /config/neovim/install.sh && \
+    /config/desktop/install.sh && \
+    /config/cleanup.sh && \
     ostree container commit
-    
