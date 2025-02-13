@@ -8,11 +8,11 @@ sysctl -p
 # Install base packages
 
 sysadmin_packages=(
-	"@virtualization"
 	"NetworkManager-tui"
-	"virt-install"
-	"virt-manager"
-	"virt-viewer"
+	# "@virtualization"
+	# "virt-install"
+	# "virt-manager"
+	# "virt-viewer"
 	"podman"
 )
 
