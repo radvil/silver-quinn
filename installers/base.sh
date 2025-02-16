@@ -43,4 +43,4 @@ packages=(
   "${utility_packages[@]}"
 )
 
-dnf5 install -y "${packages[@]}"
+dnf5 install --refresh -y "${packages[@]}"
