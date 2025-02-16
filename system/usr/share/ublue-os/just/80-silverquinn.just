@@ -10,9 +10,16 @@ disconnect-home:
     echo "Disconnecting from home"
     tailscale down
 
-# TODO: Install system flatpaks
-# _install-silverquinn-flatpaks:
-#     #!/bin/bash
-#     SILVERQUINN_FLATPAK_LIST="$(curl https://raw.githubusercontent.com/silverquinn/flatpaks/main/flatpaks/silverquinn_flatpaks | tr '\n' ' ')"
-#     echo "Installing Silverquinn Flatpaks.."
-#     flatpak --system -y install ${SILVERQUINN_FLATPAK_LIST}
+_install-silverquinn-flatpaks:
+    #!/bin/bash
+    SILVERQUINN_FLATPAK_LIST=(
+      "com.dec05eba.gpu_screen_recorder"
+      "com.github.wwmm.easyeffects"
+      "app.zen_browser.zen"
+      "org.gnome.Showtime"
+      "com.brave.Browser"
+      "org.kde.kdenlive"
+      "com.slack.Slack"
+    )
+    echo "Installing Silverquinn Flatpaks.."
+    flatpak --system -y install "${SILVERQUINN_FLATPAK_LIST[@]}"

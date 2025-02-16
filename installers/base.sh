@@ -15,6 +15,7 @@ core_packages=(
   "lazygit"
   "podman"
   "code"
+  "obs-studio"
   "alacritty"
   "nodejs"
   "kitty"
