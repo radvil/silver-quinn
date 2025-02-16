@@ -9,7 +9,6 @@ sysctl -p
 
 core_packages=(
   "NetworkManager-tui"
-  "brave-browser"
   "vinyl-theme"
   "breeze-gtk"
   "gparted"
