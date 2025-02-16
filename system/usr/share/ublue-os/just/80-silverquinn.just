@@ -17,6 +17,7 @@ _install-silverquinn-flatpaks:
       "com.github.wwmm.easyeffects"
       "app.zen_browser.zen"
       "org.gnome.Showtime"
+      "dev.qwery.AddWater"
       "com.brave.Browser"
       "org.kde.kdenlive"
       "com.slack.Slack"
