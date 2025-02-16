@@ -2,7 +2,7 @@
 
 set -ouex pipefail
 
-dnf clean all
+dnf5 clean all
 
 rm -vr /installers
 rm -vr /tmp/build.sh

@@ -3,7 +3,7 @@
 set -ouex pipefail
 
 # Add Copr repository for Neovim nightly builds
-dnf copr enable -y agriffis/neovim-nightly
+dnf5 copr enable -y agriffis/neovim-nightly
 
 # Install Neovim nightly
-dnf install -y neovim
+dnf5 install -y neovim
