@@ -3,4 +3,4 @@
 set -ouex pipefail
 
 # Install tmux
-dnf install -y tmux
+dnf5 install -y tmux

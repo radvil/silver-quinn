@@ -41,10 +41,10 @@ utility_packages=(
 )
 
 packages=(
-	${sysadmin_packages[@]}
-	${programming_packages[@]}
-	${utility_packages[@]}
+	"${sysadmin_packages[@]}"
+	"${programming_packages[@]}"
+	"${utility_packages[@]}"
 )
 
 # install rpms
-dnf5 install -y ${packages[@]}
+dnf5 install -y "${packages[@]}"
