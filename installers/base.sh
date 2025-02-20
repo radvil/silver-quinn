@@ -3,20 +3,15 @@
 set -ouex pipefail
 
 # Apply IP Forwarding before installing Docker to prevent messing with LXC networking
+
 sysctl -p
 
 # Install base packges
 
 core_packages=(
   "NetworkManager-tui"
-  "vinyl-theme"
-  "breeze-gtk"
-  "gparted"
-  "lazygit"
   "podman"
-  "alacritty"
   "nodejs"
-  "kitty"
   "tmux"
   "wget"
   "git"
@@ -40,4 +35,4 @@ packages=(
   "${utility_packages[@]}"
 )
 
-dnf5 install --refresh -y "${packages[@]}"
+dnf5 install -y "${packages[@]}"
