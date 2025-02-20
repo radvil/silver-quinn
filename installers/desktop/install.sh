@@ -29,8 +29,6 @@ LAYERED_PACKAGES=(
 # Install packagees
 dnf5 install -y "${COSMIC_PACKAGES[@]}" "${LAYERED_PACKAGES[@]}"
 
-# System setup
-systemctl enable cosmic-greeter
 plymouth-set-default-theme solar
 
 rpm-ostree kargs --append-if-missing="splash"
