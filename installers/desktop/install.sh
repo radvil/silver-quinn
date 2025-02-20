@@ -2,9 +2,6 @@
 
 set -ouex pipefail
 
-# Install custom plymouth theme
-dnf5 -y install plymouth-theme-solar
-
 # Install Cosmic DE
 dnf5 -y copr enable ryanabx/cosmic-epoch
 
@@ -15,6 +12,7 @@ COSMIC_PACKAGES=(
 )
 
 LAYERED_PACKAGES=(
+    plymouth-theme-solar
     adw-gtk3-theme
     vinyl-theme
     breeze-gtk
@@ -31,4 +29,10 @@ dnf5 install -y "${COSMIC_PACKAGES[@]}" "${LAYERED_PACKAGES[@]}"
 
 plymouth-set-default-theme solar
 
+tee /usr/libexec/silver-quinn.sh <<'EOF'
+#!/usr/bin/bash
 rpm-ostree kargs --append-if-missing="splash"
+rpm-ostree install brave-browser
+EOF
+
+chmod +x /usr/libexec/silver-quinn.sh
