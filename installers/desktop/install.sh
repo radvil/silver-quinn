@@ -3,16 +3,14 @@
 set -ouex pipefail
 
 # Install Cosmic DE
-# dnf5 -y copr enable ryanabx/cosmic-epoch
+dnf5 -y copr enable ryanabx/cosmic-epoch
 
-# COSMIC_PACKAGES=(
-#     cosmic-desktop
-#     NetworkManager-openvpn
-# )
+COSMIC_PACKAGES=(
+    cosmic-desktop
+    NetworkManager-openvpn
+)
 
 LAYERED_PACKAGES=(
-    plymouth-theme-solar
-    vinyl-theme
     breeze-gtk
     alacritty
     gparted
@@ -23,9 +21,7 @@ LAYERED_PACKAGES=(
 )
 
 # Install packages
-dnf5 install -y "${LAYERED_PACKAGES[@]}"
-
-plymouth-set-default-theme solar
+dnf5 install -y "${LAYERED_PACKAGES[@]}" "${COSMIC_PACKAGES[@]}"
 
 tee /usr/libexec/silver-quinn.sh <<'EOF'
 #!/usr/bin/bash
