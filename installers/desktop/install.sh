@@ -23,9 +23,7 @@ LAYERED_PACKAGES=(
 )
 
 # Install packages
-dnf5 install -y \
-    # "${COSMIC_PACKAGES[@]}" \
-    "${LAYERED_PACKAGES[@]}"
+dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
 plymouth-set-default-theme solar
 
