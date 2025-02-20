@@ -7,13 +7,11 @@ dnf5 -y copr enable ryanabx/cosmic-epoch
 
 COSMIC_PACKAGES=(
     cosmic-desktop
-    gnome-keyring
     NetworkManager-openvpn
 )
 
 LAYERED_PACKAGES=(
     plymouth-theme-solar
-    adw-gtk3-theme
     vinyl-theme
     breeze-gtk
     alacritty
@@ -24,7 +22,7 @@ LAYERED_PACKAGES=(
     code
 )
 
-# Install packagees
+# Install packages
 dnf5 install -y "${COSMIC_PACKAGES[@]}" "${LAYERED_PACKAGES[@]}"
 
 plymouth-set-default-theme solar
