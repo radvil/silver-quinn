@@ -14,8 +14,8 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: "${{ github.event.repository.name }}" # image produced, matches repo names
   IMAGE_VARIANT: "gnome-asus-nvidia"
+  IMAGE_NAME: "${{ github.event.repository.name }}"
   IMAGE_DESC: "My Customized Universal Blue Image Based on Bazzite's GNOME ASUS NVIDIA Image"
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}" # do not edit
   ARTIFACTHUB_LOGO_URL: "https://avatars.githubusercontent.com/u/36059968?s=400&u=f3be03df760ed01f9afc9c4b160d22d3ad271b21&v=4" # You should put your own image here so that you get a fancy profile image on https://artifacthub.io/!
@@ -69,13 +69,13 @@ jobs:
             type=sha,enable=${{ github.event_name == 'pull_request' }}
             type=ref,event=pr
           labels: |
-            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/refs/heads/main/README.md
+            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}/refs/heads/main/README.md
             org.opencontainers.image.created=${{ steps.date.outputs.date }}
             org.opencontainers.image.description=${{ env.IMAGE_DESC }}
-            org.opencontainers.image.documentation=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/refs/heads/main/README.md
-            org.opencontainers.image.source=https://github.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/blob/main/Containerfile
-            org.opencontainers.image.title=${{ env.IMAGE_NAME }}
-            org.opencontainers.image.url=https://github.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+            org.opencontainers.image.documentation=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}/refs/heads/main/README.md
+            org.opencontainers.image.source=https://github.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}/blob/main/Containerfile
+            org.opencontainers.image.title=${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}
+            org.opencontainers.image.url=https://github.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}
             org.opencontainers.image.vendor=${{ github.repository_owner }}
             org.opencontainers.image.version=latest
             io.artifacthub.package.deprecated=false
@@ -146,7 +146,7 @@ jobs:
         id: image_case
         uses: ASzc/change-string-case-action@v6
         with:
-          string: ${{ env.IMAGE_NAME }}
+          string: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}
 
       - name: Push To GHCR
         uses: redhat-actions/push-to-registry@5ed88d269cf581ea9ef6dd6806d01562096bee9c # v2
