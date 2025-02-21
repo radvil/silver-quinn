@@ -3,9 +3,11 @@
 set -ouex pipefail
 
 LAYERED_PACKAGES=(
+  papirus-icon-theme
   vinyl-theme
   breeze-gtk
   alacritty
+  kvantum
   gparted
   lazygit
   neovim

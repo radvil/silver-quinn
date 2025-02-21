@@ -28,6 +28,7 @@ utility_packages=(
   "starship"
   "ripgrep"
   "fish"
+  "hub"
   "zsh"
   "eza"
   "fzf"
