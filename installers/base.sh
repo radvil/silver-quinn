@@ -20,11 +20,13 @@ core_packages=(
 )
 
 utility_packages=(
+  "git-delta"
   "fastfetch"
   "starship"
   "ripgrep"
   "fish"
   "zsh"
+  "eza"
   "fzf"
   "bat"
   "fd"
