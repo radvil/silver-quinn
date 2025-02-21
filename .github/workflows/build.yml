@@ -5,19 +5,20 @@ on:
     branches:
       - main
   schedule:
-    - cron: '05 10 * * *'  # 10:05am UTC everyday
+    - cron: "05 10 * * *" # 10:05am UTC everyday
   push:
     branches:
       - main
     paths-ignore:
-      - '**/README.md'
+      - "**/README.md"
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: "${{ github.event.repository.name }}-asus-nvidia"  # the name of the image produced by this build, matches repo names
-  IMAGE_DESC: "My Customized Universal Blue Image Based on Bazzite's KDE ASUS NVIDIA Image"
-  IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"  # do not edit
-  ARTIFACTHUB_LOGO_URL: "https://avatars.githubusercontent.com/u/36059968?s=400&u=f3be03df760ed01f9afc9c4b160d22d3ad271b21&v=4"  # You should put your own image here so that you get a fancy profile image on https://artifacthub.io/!
+  IMAGE_NAME: "${{ github.event.repository.name }}" # image produced, matches repo names
+  IMAGE_VARIANT: "gnome-asus-nvidia"
+  IMAGE_DESC: "My Customized Universal Blue Image Based on Bazzite's GNOME ASUS NVIDIA Image"
+  IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}" # do not edit
+  ARTIFACTHUB_LOGO_URL: "https://avatars.githubusercontent.com/u/36059968?s=400&u=f3be03df760ed01f9afc9c4b160d22d3ad271b21&v=4" # You should put your own image here so that you get a fancy profile image on https://artifacthub.io/!
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-${{ inputs.brand_name}}-${{ inputs.stream_name }}
@@ -39,11 +40,11 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
       # This is optional, but if you see that your builds are way too big for the runners, you can enable this by uncommenting the following lines:
-      # - name: Maximize build space
-      #   uses: ublue-os/remove-unwanted-software@517622d6452028f266b7ba4cc9a123b5f58a6b53 # v7
-      #   with:
-      #     remove-codeql: true
-      
+      - name: Maximize build space
+        uses: ublue-os/remove-unwanted-software@517622d6452028f266b7ba4cc9a123b5f58a6b53 # v7
+        with:
+          remove-codeql: true
+
       - name: Get current date
         id: date
         run: |
@@ -94,7 +95,7 @@ jobs:
             ./Containerfile
           # Postfix image name with -custom to make it a little more descriptive
           # Syntax: https://docs.github.com/en/actions/learn-github-actions/expressions#format
-          image: ${{ env.IMAGE_NAME }}
+          image: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
           oci: false
