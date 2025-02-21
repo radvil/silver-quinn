@@ -2,8 +2,7 @@
 
 set -ouex pipefail
 
-wget -qO- https://git.io/papirus-icon-theme-install | sudo sh &&
-  wget -qO- https://git.io/papirus-folders-install | sh
+wget -qO- https://git.io/papirus-icon-theme-install | sh
 
 LAYERED_PACKAGES=(
   vinyl-theme
