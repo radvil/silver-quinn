@@ -1,5 +1,5 @@
 [neovim-nightly]
-name=Copr repo for neovim-nightly owned by agriffis
+name=Neovim Nightly
 baseurl=https://download.copr.fedorainfracloud.org/results/agriffis/neovim-nightly/fedora-$releasever-$basearch/
 gpgkey=https://download.copr.fedorainfracloud.org/results/agriffis/neovim-nightly/pubkey.gpg
 skip_if_unavailable=True

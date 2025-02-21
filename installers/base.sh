@@ -6,6 +6,8 @@ set -ouex pipefail
 
 sysctl -p
 
+dnf5 copr enable -y foopsss/shell-color-scripts
+
 # Install base packges
 
 core_packages=(
@@ -20,6 +22,7 @@ core_packages=(
 )
 
 utility_packages=(
+  "shell-color-scripts"
   "git-delta"
   "fastfetch"
   "starship"
