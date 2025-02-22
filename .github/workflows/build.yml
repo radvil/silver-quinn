@@ -14,25 +14,31 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_VARIANT: "asus-nvidia"
   IMAGE_NAME: "${{ github.event.repository.name }}"
-  IMAGE_DESC: "My Customized Universal Blue Image Based on Bazzite's KDE ASUS NVIDIA Image"
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}" # do not edit
-  ARTIFACTHUB_LOGO_URL: "https://avatars.githubusercontent.com/u/36059968?s=400&u=f3be03df760ed01f9afc9c4b160d22d3ad271b21&v=4" # You should put your own image here so that you get a fancy profile image on https://artifacthub.io/!
+  ARTIFACTHUB_LOGO_URL: "https://avatars.githubusercontent.com/u/36059968?s=400&u=f3be03df760ed01f9afc9c4b160d22d3ad271b21&v=4"
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-${{ inputs.brand_name}}-${{ inputs.stream_name }}
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
   build_push:
-    name: Build and push image
+    strategy:
+      matrix:
+        variant: [asus-nvidia, gnome-asus-nvidia]
+    name: Build and push ${{ matrix.variant }} image
     runs-on: ubuntu-24.04
 
     permissions:
       contents: read
       packages: write
       id-token: write
+
+    env:
+      IMAGE_VARIANT: "${{ matrix.variant }}"
+      IMAGE_DESC: "My Customized Universal Blue Image Based on Bazzite's ${{ matrix.variant == 'asus-nvidia' && 'KDE' || 'GNOME' }} ASUS NVIDIA Image"
+      BASE_IMAGE: "bazzite-${{ matrix.variant }}"
 
     steps:
       # These stage versions are pinned by https://github.com/renovatebot/renovate
