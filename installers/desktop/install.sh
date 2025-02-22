@@ -2,8 +2,6 @@
 
 set -ouex pipefail
 
-wget -qO- https://git.io/papirus-icon-theme-install | sh
-
 LAYERED_PACKAGES=(
   vinyl-theme
   breeze-gtk
