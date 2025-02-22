@@ -102,3 +102,53 @@ This provides users a method of verifying the image.
 - [m2os](https://github.com/m2giles/m2os)
 - [bos](https://github.com/bsherman/bos)
 - [homer](https://github.com/bketelsen/homer/)
+
+## Local Development
+
+### Building Locally
+
+The repository includes a `build-local.sh` script that helps you build and manage images locally. This is useful for testing changes before pushing them to GitHub.
+
+```bash
+# Show help and available commands
+./build-local.sh
+
+# Build specific variants
+./build-local.sh build kde-nvidia        # Build KDE variant with NVIDIA drivers
+./build-local.sh build kde-nvidia-open   # Build KDE variant with NVIDIA open drivers
+./build-local.sh build gnome-nvidia      # Build GNOME variant with NVIDIA drivers
+./build-local.sh build gnome-nvidia-open # Build GNOME variant with NVIDIA open drivers
+
+# Manage local images
+./build-local.sh list                    # List all built images
+./build-local.sh clean kde-nvidia        # Remove specific variant
+./build-local.sh clean-all              # Remove all variants
+```
+
+The script will build the following images:
+
+- `silver-quinn-kde-nvidia` (based on `bazzite-asus-nvidia`)
+- `silver-quinn-kde-nvidia-open` (based on `bazzite-asus-nvidia-open`)
+- `silver-quinn-gnome-nvidia` (based on `bazzite-gnome-asus-nvidia`)
+- `silver-quinn-gnome-nvidia-open` (based on `bazzite-gnome-asus-nvidia-open`)
+- `silver-quinn` (based on `silver-quinn-kde-nvidia` as the default image)
+
+When building the KDE NVIDIA variant, it will also create the default `silver-quinn` image automatically.
+
+### Testing Built Images
+
+To test a built image, you can either:
+
+1. Run it in a container:
+
+```bash
+podman run -it localhost/silver-quinn-kde-nvidia:latest bash
+```
+
+2. Rebase your system to it:
+
+```bash
+rpm-ostree rebase ostree-unverified-registry:localhost/silver-quinn-kde-nvidia:latest
+```
+
+Remember to use `sudo` with the commands if you're using rootful Podman.
