@@ -214,6 +214,7 @@ jobs:
       IMAGE_DESC: "Silver Quinn - A Customized Universal Blue Image Based on Bazzite"
       BASE_IMAGE: "ghcr.io/${{ github.repository_owner }}/silver-quinn-kde-nvidia:latest"
       IMAGE_VARIANT: ""  # Empty for default image
+      IMAGE_SUFFIX: ""   # Empty suffix for default image
 
     steps:
       # These stage versions are pinned by https://github.com/renovatebot/renovate
@@ -274,9 +275,7 @@ jobs:
         with:
           containerfiles: |
             ./Containerfile
-          # Postfix image name with -custom to make it a little more descriptive
-          # Syntax: https://docs.github.com/en/actions/learn-github-actions/expressions#format
-          image: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}
+          image: ${{ env.IMAGE_NAME }}${{ env.IMAGE_SUFFIX }}
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
           oci: false
@@ -327,7 +326,7 @@ jobs:
         id: image_case
         uses: ASzc/change-string-case-action@v6
         with:
-          string: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_VARIANT }}
+          string: ${{ env.IMAGE_NAME }}${{ env.IMAGE_SUFFIX }}
 
       - name: Push To GHCR
         uses: redhat-actions/push-to-registry@5ed88d269cf581ea9ef6dd6806d01562096bee9c # v2
