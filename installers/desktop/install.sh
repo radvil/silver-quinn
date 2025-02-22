@@ -8,10 +8,10 @@ wget -qO- https://git.io/papirus-folders-install | sh
 papirus-folders -C yaru
 
 LAYERED_PACKAGES=(
-  # vinyl-theme
+  vinyl-theme
   breeze-gtk
   alacritty
-  # kvantum
+  kvantum
   gparted
   lazygit
   neovim

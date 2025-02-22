@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_VARIANT: "gnome-asus-nvidia"
+  IMAGE_VARIANT: "asus-nvidia"
   IMAGE_NAME: "${{ github.event.repository.name }}"
-  IMAGE_DESC: "My Customized Universal Blue Image Based on Bazzite's GNOME ASUS NVIDIA Image"
+  IMAGE_DESC: "My Customized Universal Blue Image Based on Bazzite's KDE ASUS NVIDIA Image"
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}" # do not edit
   ARTIFACTHUB_LOGO_URL: "https://avatars.githubusercontent.com/u/36059968?s=400&u=f3be03df760ed01f9afc9c4b160d22d3ad271b21&v=4" # You should put your own image here so that you get a fancy profile image on https://artifacthub.io/!
 
